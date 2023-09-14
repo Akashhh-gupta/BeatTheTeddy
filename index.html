@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat The teddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: goldenrod;
+        }
+
+        #health-bar {
+            height: 100%;
+            width: 100%;
+            animation: decrease 2s ease-out 1;
+        }
+
+        /* @keyframes decrease {
+            90% {
+                height: 90%;
+                width: 90%;
+            }
+        } */
+
+        #imgs,
+        #img-div,
+        #text {
+            height: 100%;
+            width: 100%;
+            animation: grow 2s ease-out 1;
+        }
+
+        @keyframes grow {
+            0% {
+                height: 0;
+                width: 0;
+            }
+
+            100% {
+                height: 100;
+                width: 100;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex justify-content-center" style="background-color: white">
+        <img src="title.png" alt="" width="100%" height="100%">
+    </div>
+
+    <div id="body">
+        <div class="container d-flex my-3">
+            <div class="text-center">
+                <h3 id="health-value">100</h3>
+            </div>
+            <div class="w-100">
+                <div class="mx-2 bg-danger" id="health-bar"></div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <h3 id="text">I AM GONNA KILL YOU!!!</h3>
+        </div>
+
+        <div class="container d-flex justify-content-center align-self-center align-items-center" id="img-div"
+            onclick="update_health()">
+            <img src="Bear/Evil-teddy-bear-1.png" alt="" class="my-4" id="imgs">
+        </div>
+
+        <audio id="audio" src="Audio/Just_My_Type.mp3"></audio>
+        <audio id="audio1" src="Audio/Just_My_Type.mp3">
+        </audio>
+
+        <div class="text-center my-3">
+            <h4 id="text-btm"></h4>
+        </div>
+
+        <div class="d-flex justify-content-center m-3">
+            <button class="btn btn-danger btn-m m-2" type="button">Close</button>
+            <button class="btn btn-success btn-m m-2" type="button" onclick="location.reload()">Restart</button>
+        </div>
+    </div>
+
+    <script>
+
+        function update_health() {
+            let health = parseInt(document.getElementById("health-value").innerText)
+            console.log(health)
+            console.log("Hello");
+
+            if (health == 0) {
+                return;
+            }
+            document.getElementById("health-value").innerText = `${health - 10}`;
+            document.getElementById("health-bar").style.width = `${health - 10}%`;
+            if (health <= 10) {
+                document.getElementById("text").innerText = "🙂🙂🙂🙂🙂🙂🙂🙂"
+                document.getElementById("text-btm").innerHTML = `<h4 id="text-btm">Thank-You<br>👍🏽</h4>`
+                playmusic("audio/let-her-go-meme.mp3");
+                document.getElementById("imgs").style.filter = "brightness(100%)"
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-become-good.jpg"
+                return;
+            }
+            if (health == 100) {
+                document.getElementById("text").innerText = "Aughhhhhhhhhh"
+                playmusic("audio/aughhhhhhhhhh.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-skull-face-1.avif"
+            }
+            if (health == 90) {
+                document.getElementById("text").innerText = "Heheh I got a Knife 😈"
+                playmusic("audio/skeletor3.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-with-knife-1.avif"
+            }
+            if (health == 80) {
+                document.getElementById("text").innerText = "🥹🥹🥲😢😭😭😿"
+                playmusic("audio/donk.mp3");
+                setTimeout(() => {
+                    playmusic("audio/sad-beanie.mp3")
+                }, 500);
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-sitting-with-knife.png"
+            }
+            if (health == 70) {
+                document.getElementById("text").innerText = "I am getting Serious Now!!! 😡😡😡"
+                setTimeout(() => {
+                    playmusic("audio/classic_hurt.mp3");
+                }, 500);
+                playmusic("audio/donk.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-walking.avif"
+            }
+            if (health == 60) {
+                document.getElementById("text").innerText = "WAAAAAAAAAAAAAAAAAAAAAUUUUUUURRRRRRRRRHHHHHHH"
+                setTimeout(() => {
+                    playmusic("audio/eren-titan-roar.mp3");
+                }, 500);
+                playmusic("audio/donk.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-with-axe.jpg"
+            }
+            if (health == 50) {
+                document.getElementById("text").innerText = "Hash!!! wait I am tired"
+                playmusic("audio/donk.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-holding-piece-brain.avif"
+            }
+            if (health == 40) {
+                document.getElementById("text").innerText = "I will definitely Kill you wait"
+                setTimeout(() => {
+                    playmusic("audio/sadtrombone.swf.mp3");
+                }, 500);
+                playmusic("audio/classic_hurt.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-damaged.avif"
+            }
+            if (health == 30) {
+                document.getElementById("text").innerText = "I guess my Time has Come "
+                setTimeout(() => {
+                    playmusic("audio/snake-death.mp3");
+                }, 500);
+                playmusic("audio/classic_hurt.mp3");
+                document.getElementById("imgs").src = "Bear/teddy defeated.png"
+            }
+            if (health == 20) {
+                document.getElementById("text").innerText = "I am evolving"
+                playmusic("audio/scream.mp3");
+                document.getElementById("imgs").src = "Bear/evil-teddy-bear-evolving.avif"
+                document.getElementById("imgs").style.filter = "brightness(300%)"
+            }
+        }
+
+
+        function playmusic(add) {
+            let song = document.getElementById("audio");
+            song.src = `${add}`
+            song.play()
+        }
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
